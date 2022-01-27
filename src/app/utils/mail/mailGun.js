@@ -8,20 +8,25 @@ const keys = require('../../../configs/keys')
  * @param {string} subject 
  * @param {string} text 
  */
-const mailGun = async ({ to, subject, text = "", html = "" }) => {
+const mailGun = async ({ to, subject, html = "" }) => {
+
 
     const data = {
-        from: keys.mailGun.sender,
         to,
+        from: keys.mailGun.sender,
         subject,
-        text,
         html,
     };
 
-    mg.messages().send(data, function (error, body) {
-        if (error) console.log(error)
-        console.log(body);
-    });
+    await mg
+        .send(data)
+        .then(() => {
+            console.log('Email sent')
+        })
+        .catch((error) => {
+            console.error(error)
+            console.error(error.response.body)
+        })
 
 }
 

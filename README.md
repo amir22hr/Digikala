@@ -25,4 +25,4 @@ $ npm install
 2.  RUN npm install
 3.  RUN npm run start
 
-> for login A user by default:  [digikala@mailinator.com](mailto:digikala@mailinator.com)  12345
+> for login A user by default:  [digikala@mailinator.com](mailto:digikala@mailinator.com)  123456

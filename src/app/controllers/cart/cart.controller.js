@@ -1,7 +1,7 @@
 const ejs = require('ejs')
 
 const { rou, lang, myOrder, validation, mailGun } = require('../../utils')
-const { ProductCategory, Product, Comment, Cart } = require('../../models')
+const { ProductCategory, Product, Customer, Cart } = require('../../models')
 
 const get = async (req, res) => {
 
@@ -134,6 +134,11 @@ const post = async (req, res) => {
             //Complete Cart
             myCart.status = "success";
             await myCart.save()
+
+            const customer = await Customer.findById(req.user._id)
+            customer.items.points += Amount.points
+            await customer.save()
+
 
         }
 

@@ -1,7 +1,8 @@
-const mailgun = require("mailgun-js");
+// const mailgun = require("mailgun-js");
+const sgMail = require('@sendgrid/mail')
 
 const keys = require('../keys')
 
-module.exports = mailgun({ apiKey: keys.mailGun.key, domain: keys.mailGun.domain });
+module.exports = sgMail.setApiKey(keys.mailGun.key)
 
 

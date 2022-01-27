@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const ejs = require('ejs')
 
 const { rou, lang, validation, mailGun } = require('../../utils')
 const { Queues } = require('../../models')
@@ -21,8 +22,22 @@ const get = (req, res) => {
 const post = async (req, res) => {
 
     const email = req.body.email;
+    const queues = await Queues.findOne({ email })
     const cryptoToken = crypto.randomBytes(80).toString('hex');
-    const validLink = `http://localhost:3001${rou.registerForm}?token=${cryptoToken}`
+    console.log(queues)
+    var validLink;
+    if(queues){
+        validLink = `http://localhost:3001${rou.registerForm}?token=${queues.token}`
+    }else{
+        validLink = `http://localhost:3001${rou.registerForm}?token=${cryptoToken}`
+    }
+
+    //render ejs
+    const data = {
+        title: lang.registerMailTitle,
+        validLink
+    }
+    const html = await ejs.renderFile(`${__dirname}/../../views/mail/registerMail.ejs`, data)
 
     //Validation Input
     const { error } = validation.registerValidation(req.body);
@@ -35,13 +50,12 @@ const post = async (req, res) => {
     }
 
     //Validation DB
-    const queues = await Queues.findOne({ email })
     if (queues) {
         //EmailSender
         await mailGun({
             to: email,
-            subject: "Validation Account",
-            text: queues.token
+            subject: lang.registerMailSubject,
+            html
         });
     } else {
         const createQueue = Queues({
@@ -53,8 +67,8 @@ const post = async (req, res) => {
             await createQueue.save();
             await mailGun({
                 to: email,
-                subject: "Validation Account",
-                text: `<a href="${validLink}">valid Link</a>`
+                subject: lang.registerMailSubject,
+                html
             });
         } catch (err) {
             console.log(err)

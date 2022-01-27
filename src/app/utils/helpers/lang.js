@@ -13,6 +13,8 @@ const enToFa = {
     dashboard_myComment: "نظرات من",
     dashboard_myOrders: 'سفارش‌های من',
     category: 'دسته بندی',
+    registerMailTitle: 'تایید کردن پست الکترونیک - دیجی کالا',
+    registerMailSubject: 'تایید کردن پست الکترونیک - دیجی کالا',
 }
 
 module.exports = enToFa
