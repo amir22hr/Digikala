@@ -1,0 +1,82 @@
+<%# 
+inputs this file:
+-----------------
+
+%> 
+
+<%# variables %>
+<% 
+var has = user.items.digiplus.has;
+var expiry_date = user.items.digiplus.expiry_date;
+var days_left = user.items.digiplus.days_left.toLocaleString('fa-ir');
+%> 
+
+
+<%# Html - Body %> 
+<%- include('../layouts/dashboard/header.ejs') %>
+
+<%# Template %> 
+<div class="column is-9">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<%= rou.dashboard %>">داشبورد</a></li>
+            <li class="is-active"><a><%= lang.dashboard_digiplus %></a></li>
+        </ul>
+    </nav>
+    <% if(flash){ %>
+        <div class="notification is-danger">
+            <p class="has-text-weight-bold"><%= flash %></p>
+        </div>
+    <% } %>  
+    <% if(has){ %> 
+        <section class="hero is-info welcome is-small">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                       شما اشتراک دیجی پلاس فعال دارید
+                    </h1>
+                    <h2 class="subtitle">
+                        <%= days_left %> روز باقی مانده تا پایان اشتراک
+                    </h2>
+                    <br>
+                    <h1 class="subtitle">
+                        پایان اشتراک : <%= expiry_date %>
+                    </h1>
+                </div>
+            </div>
+        </section>
+    <% }else{ %> 
+        <section class="info-tiles">
+            <div class="tile is-ancestor has-text-centered">
+                <div class="tile is-parent">
+                    <article class="tile is-child box has-background-danger">
+                        <p class="title has-text-light">
+                            اشتراک ۱ ماهه
+                        </p>
+                        <br>
+                        <form action="<%= rou.dashboard_digiplus %>" method="post">
+                            <button name="month1" type="submit" class="button is-large is-danger is-light is-rounded is-outlined">خرید اشتراک ۱ ماهه</button>
+                        </form>
+                        <p class="title pt-6 has-text-light">۴۵٬۹۰۰ تومان</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box has-background-danger">
+                        <p class="title has-text-light">
+                            اشتراک ۳ ماهه
+                        </p>
+                        <br>
+                        <form action="<%= rou.dashboard_digiplus %>" method="post">
+                            <button name="month3" type="submit" class="button is-large is-danger is-light is-rounded is-outlined">خرید اشتراک ۳ ماهه</button>
+                        </form>
+                        <p class="title pt-6 has-text-light">۸۲,۰۰۰ تومان</p>
+                    </article>
+                </div>
+            </div>
+        </section>  
+    <% } %> 
+    
+</div>
+
+<%# Body - Html %> 
+<%- include('../layouts/dashboard/footer.ejs') %>

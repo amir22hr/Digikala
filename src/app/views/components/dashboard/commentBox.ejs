@@ -1,0 +1,45 @@
+<% comments.forEach(comment => { %>
+<article class="message">
+    <div class="message-header">
+      <span>
+        <i class="fas fa-paperclip"></i>
+        <a href="<%= rou.product + comment.product_id %>"><%= comment.product_name %></a>
+      </span>
+      <span>
+        <%= comment.creation_at %>
+          <i class="fas fa-calendar-day"></i>
+      </span>
+    </div>
+    <div class="message-body">
+        
+        <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= user.name %></strong>
+                  <br>
+                  <%= comment.content %>
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <form action="<%= rou.dashboard_myComment %>" method="post">
+                    <button name="id" value="<%= comment._id %>" class="button has-background-light is-danger is-inverted">
+                        <span class="icon is-small">
+                          <i class="fas fa-trash has-text-danger"></i>
+                        </span>
+                    </button>
+                  </form>
+                </div>
+              </nav>
+            </div>
+          </article>
+
+    </div>
+</article>
+<% }); %> 

@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <div class="container">
+        <div id="navbarMenuHeroB" class="navbar-menu">
+            <div class="navbar-start">
+                <% categories.forEach(category => { %> 
+                    <a href="<%= rou.category + category.name.english %>" class="navbar-item <% if(categorySelect.name.english == category.name.english) {%> is-active <% } %>">
+                        <%= category.name.persian %>
+                    </a>
+                <% }); %> 
+                <span class="navbar-item">
+                    <a href="<%= rou.digiplusPage %>" id="digiPlus" class="button is-rounded is-danger">
+                        <span class="icon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span>دیجی پلاس</span>
+                    </a>
+                </span>
+                <span class="navbar-item">
+                    <a class="button is-rounded">
+                        <span>سوالی دارید؟</span>
+                    </a>
+                </span>
+                <span class="navbar-item">
+                    <a class="button is-rounded">
+                        <span>فروشنده شوید</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</nav>

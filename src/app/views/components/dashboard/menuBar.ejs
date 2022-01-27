@@ -1,0 +1,46 @@
+<nav class="navbar is-white">
+    <div class="container">
+        <div class="navbar-brand">
+            <span class="navbar-item brand-text has-text-weight-bold">
+                <span class="button is-danger is-outlined is-rounded">
+                    <span class="icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span>
+                        <%= user.name %>
+                    </span>
+                </span>
+            </span>
+            <div class="navbar-burger burger" data-target="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="<%= rou.home %>">
+                    خانه
+                </a>
+                <a class="navbar-item has-text-danger-dark" href="<%= rou.dashboard_digiplus %>">
+                    اشتراک دیجی ‌پلاس
+                </a>
+                <a class="navbar-item" href="admin.html">
+                    میخواهم فروشنده شوم
+                </a>
+                <a class="navbar-item" href="admin.html">
+                    سوالی دارید؟
+                </a>
+                <span class="navbar-item">
+                    <a href="<%= rou.logout %>" class="button is-rounded is-danger">
+                        <span class="icon">
+                            <i class="fas fa-door-open"></i>
+                        </span>
+                        <span>خروج از حساب کاربری</span>
+                    </a>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</nav>

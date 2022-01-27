@@ -1,0 +1,68 @@
+<%# 
+inputs this file:
+-----------------
+
+%> 
+
+<%# variables %>
+<% 
+var wallet = user.items.wallet.toLocaleString('fa-ir');
+%> 
+
+
+<%# Html - Body %> 
+<%- include('../layouts/dashboard/header.ejs') %>
+
+<%# Template %> 
+<div class="column is-9">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<%= rou.dashboard %>">داشبورد</a></li>
+            <li class="is-active"><a><%= lang.dashboard_chargeWallet %></a></li>
+        </ul>
+    </nav>
+    <% if(flash){ %>
+        <div class="notification is-danger">
+            <p class="has-text-weight-bold"><%= flash %></p>
+        </div>
+    <% } %>  
+    <section class="info-tiles">
+        <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <form action="<%= rou.dashboard_chargeWallet %>" method="post">
+                        <div class="field has-addons pt-3">
+                            <p class="control">
+                                <span class="select">
+                                    <select>
+                                        <option>تومان</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p class="control is-expanded">
+                                <input name="charge" class="input" type="number"
+                                    placeholder="مبلغ مورد نظر">
+                            </p>
+                            <p class="control">
+                                <button type="submit" class="button">
+                                    پرداخت
+                                </button>
+                            </p>
+                        </div></form>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title">
+                        <%= wallet %> 
+                    </p>
+                    <p class="subtitle">کیف پول (تومان)</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+</div>
+
+<%# Body - Html %> 
+<%- include('../layouts/dashboard/footer.ejs') %>

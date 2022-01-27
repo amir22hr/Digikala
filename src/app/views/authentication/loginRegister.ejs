@@ -1,0 +1,44 @@
+<%# 
+inputs this file:
+-----------------
+rou , setFlash
+%> 
+
+<%# inputs %>
+<% var flash = setFlash; %> 
+
+<%# Html - Body %> 
+<%- include('../layouts/authentication/header.ejs'); %>
+
+<%# Template %> 
+<section class="hero is-fullheight">
+        <div class="hero-body has-text-centered">
+            <div class="login">
+                <img class="my-6" src="<%= rou.static_img %>digikala_logo.svg" width="325px" />
+                <% if(flash){ %> 
+                    <article class="message <%= flash.status %>">
+                        <div class="message-body">
+                            <%= flash.msg %>
+                        </div>
+                    </article>
+                <% } %> 
+                <p class="is-size-4 has-text-weight-bold has-text-right my-4">ورود / ثبت نام</p>
+                <p class="is-size-6 has-text-right my-3">لطفا پست الکترونیک خود را وارد کنید</p>
+                <form action="<%= rou.loginRegister %>" method="post">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium is-rounded" type="email"
+                                name="email" required />
+                        </div>
+                    </div>
+                    <br />
+                    <button class="button is-block is-fullwidth is-danger is-medium is-rounded" type="submit">
+                        ورود به دیجی‌کالا
+                    </button>
+                </form>
+            </div>
+        </div>
+</section>
+
+<%# Body - Html %> 
+<%- include('../layouts/authentication/footer.ejs', {timerStart: false}) %>

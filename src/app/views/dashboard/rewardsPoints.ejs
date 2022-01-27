@@ -1,0 +1,94 @@
+<%# 
+inputs this file:
+-----------------
+
+%> 
+
+<%# variables %>
+<% 
+var points = user.items.points.toLocaleString('fa-ir');
+var rewardsLength = rewards.length.toLocaleString('fa-ir');
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/dashboard/header.ejs') %>
+
+<%# Template %> 
+<div class="column is-9">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<%= rou.dashboard %>">داشبورد</a></li>
+            <li class="is-active"><a><%= lang.dashboard_rewardsPoints %></a></li>
+        </ul>
+    </nav>
+    <% if(flash){ %>
+        <div class="notification is-danger">
+            <p class="has-text-weight-bold"><%= flash %></p>
+        </div>
+    <% } %> 
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container">
+                <!-- level -->
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">امتیازکل</p>
+                            <p class="title"><%= points %></p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">کد ها</p>
+                            <p class="title"><%= rewardsLength %></p>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /level -->
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <% if(rewards){ %>
+        <% rewards.forEach(reward => { %>
+            <article class="message">
+            <div class="message-header">
+              <p><%= reward.title %></p>
+              <% myRewards.forEach(code => {%> 
+                <% if(code == reward.code){ %>
+                    <div class="is-flex is-justify-content-center">
+                    <button id="btn-reward-code" class="button is-rounded is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="far fa-copy"></i>
+                        </span>
+                    </button>
+                    <div class="reward-width">
+                        <input id="copy-reward-code" value="<%= code %>"
+                            class="input is-normal has-text-centered is-rounded has-background-grey-dark is-danger has-text-white"
+                            type="text" readonly>
+                    </div>
+                </div>
+                <% }else{ %>
+                    <form action="<%= rou.dashboard_rewardsPoints %>" method="post">
+                      <button name="id" value="<%= reward._id %>" class="button is-light is-outlined is-rounded" type="submit">دریافت کد تخفیف</button>
+                    </form>
+                <% } %>  
+              <% }) %> 
+              <span>
+                <%= reward.get_points.toLocaleString('fa-ir') %> امتیاز
+                  <i class="fas fa-coins"></i>
+              </span>
+            </div>
+            <div class="message-body">
+                <%= reward.description %>
+            </div>
+          </article>
+        <% }); %> 
+    <% } %>
+
+    
+</div>
+
+<%# Body - Html %> 
+<%- include('../layouts/dashboard/footer.ejs') %>

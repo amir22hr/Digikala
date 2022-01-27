@@ -1,0 +1,60 @@
+<%# 
+inputs this file:
+-----------------
+rou , email, setFlash
+%> 
+
+<%# inputs %>
+<% var flash = setFlash; %> 
+
+<%# Html - Body %> 
+<%- include('../layouts/authentication/header.ejs'); %>
+
+<%# Template %> 
+<section class="hero is-fullheight">
+        <div class="hero-body has-text-centered">
+            <div class="login">
+                <img class="my-6" src="<%= rou.static_img %>digikala_logo.svg" width="325px" />
+                <% if(flash){ %> 
+                    <article class="message <%= flash.status %>">
+                        <div class="message-body">
+                            <%= flash.msg %>
+                        </div>
+                    </article>
+                <% } %> 
+                <p class="is-size-4 has-text-weight-bold has-text-right my-4">رمز عبور را وارد کنید</p>
+                <p class="is-size-6 has-text-right my-3">رمز عبور حساب کاربری خود را وارد کنید
+                </p>
+                <form action="<%= rou.login %>" method="post">
+                    <div class="field">
+                        <div class="control">
+                            <input hidden value="<%= email %>" name="email" />
+                            <input name="password" class="input is-medium is-rounded" type="password" required />
+                        </div>
+                    </div>
+                    <br />
+                    <button class="button is-block is-fullwidth is-danger is-medium is-rounded" type="submit">
+                        ادامه
+                    </button>
+                </form>
+                    <br>
+                    <nav class="level">
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <a class="has-text-danger-dark" href="<%= rou.passwordRecovery %>">بازیابی رمز عبور</a>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <a class="has-text-black" href="<%= rou.loginRegister %>">بازگشت</a>
+                            </div>
+                        </div>
+                    </nav>
+            </div>
+        </div>
+</section>
+
+<%# Body - Html %> 
+<%- include('../layouts/authentication/footer.ejs', {timerStart: false}) %>
+
+

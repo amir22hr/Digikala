@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bulma-rtl.css" />
+    <link rel="stylesheet" href="/static/css/font.css" />
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/slider.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css" />
+    <title><%= title %> - <%= categorySelect.name.persian %></title>
+</head>
+<body dir="rtl">
+    <section class="hero is-white is-large">
+
+        <!-- Header -->
+     <div class="hero-head">
+         <% //Search Bar %> 
+         <%- include('../../components/home/searchBar.ejs') %> 
+         <% //Category Bar %> 
+         <%- include('../../components/home/categoryBar.ejs') %> 
+     </div>
+     <!-- /Header -->

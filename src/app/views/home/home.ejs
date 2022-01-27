@@ -1,0 +1,51 @@
+<%# 
+inputs this file:
+-----------------
+rou , user
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/home/header.ejs'); %>
+
+<%# Template %> 
+<!-- Body -->
+<section class="my-6">
+    <div class="container">
+        <img class="roundedImg" src="<%= rou.static_img %>banner_header_1.gif" alt="">
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                        <img class="roundedImg" src="<%= rou.static_img %>poster1.jpeg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img class="roundedImg" src="<%= rou.static_img %>poster2.jpeg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img class="roundedImg" src="<%= rou.static_img %>poster3.jpeg" style="width:100%">
+                    </div>
+
+                </div>
+            </div>
+            <div class="column">
+                <img class="roundedImg" src="<%= rou.static_img %>poster4.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br>
+<!-- /Body -->
+
+<%# Body - Html %> 
+<%- include('../layouts/home/footer.ejs') %>

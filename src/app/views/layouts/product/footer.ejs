@@ -1,0 +1,37 @@
+<% //footer Content %> 
+<%- include('../../components/home/footerContent.ejs') %> 
+
+
+</section>
+
+<!-- scripts -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script src="/static/js/fontawesome.js"></script>
+<script src="/static/js/jquery-3.6.0.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/voiceSearch.js"></script>
+
+<script>
+    $('#tab-bars').click(function(){
+        if(!$(this).hasClass('is-active')){
+            $(this).addClass('is-active')
+            $('#tab-comment').removeClass('is-active')
+
+            $('#content-bars').removeAttr('hidden')
+            $('#content-comment').attr('hidden','')
+        }
+    })
+
+    $('#tab-comment').click(function(){
+        if(!$(this).hasClass('is-active')){
+            $(this).addClass('is-active')
+            $('#tab-bars').removeClass('is-active')
+
+            $('#content-comment').removeAttr('hidden')
+            $('#content-bars').attr('hidden','')
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<div class="notification is-light my-6">
+    <div class="has-text-centered">
+        <img src="<%= rou.static_img %>emptyCart.png" alt="">
+    </div>
+    <p class="has-text-centered is-size-4">سبد خرید شما خالی است!</p>
+    <hr>
+    <p class="has-text-centered has-text-weight-bold">
+        <% if(user){ %>
+            با کامل کردن هر سفارش یک شانس در قرعه کشی بزرگ دیجی کالا دریافت کنید
+        <% }else{ %>
+            برای مشاهده محصولاتی که پیش‌تر به سبد خود اضافه کرده‌اید لطفا وارد شوید.
+        <% } %>
+    </p>
+</div>

@@ -1,0 +1,59 @@
+<span class="navbar-item">
+    <button onclick="cartBox()" class="button is-rounded">
+        <span class="icon">
+            <i class="fas fa-shopping-cart"></i>
+        </span>
+    </button>
+    <div id="cartContent" hidden>
+        <% if(user && myOrders){ %>
+            <% myOrders.forEach(order => { %>
+                <article class="media">
+                    <figure class="media-left">
+                      <p class="image is-64x64">
+                        <img src="<%= order.items.photo.original %>">
+                      </p>
+                    </figure>
+                    <div class="media-content">
+                      <div class="content">
+                        <p>
+                          <%= order.name.persian %>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="media-right">
+                            <a href="<%= rou.cart %>?deleteItem=<%= order._id %> " class="button has-background-white is-danger is-inverted">
+                                <span class="icon is-small">
+                                  <i class="fas fa-trash has-text-danger"></i>
+                                </span>
+                            </a>
+                    </div>
+                  </article>
+            <% }); %> 
+        <% }else{ %> 
+            <img src="<%= rou.static_img %>emptyCart.png" alt="">
+            <p class="has-text-centered is-size-4">سبد خرید شما خالی است!</p>
+            <hr>
+            <p class="has-text-centered has-text-weight-bold">
+                <% if(user){ %>
+                    با کامل کردن هر سفارش یک شانس در قرعه کشی بزرگ دیجی کالا دریافت کنید
+                <% }else{ %> 
+                    برای مشاهده محصولاتی که پیش‌تر به سبد خود اضافه کرده‌اید لطفا وارد شوید.
+                <% } %> 
+            </p>
+        <% } %> 
+    </div>
+    <p id="btnOk" hidden>
+        <% if(user){ %>
+            مشاهده سبد خرید
+        <% }else{ %> 
+            ورود به حساب کاربری
+        <% } %> 
+    </p>
+    <p id="linkOk" hidden>
+        <% if(user){ %>
+            <%= rou.cart %>
+        <% }else{ %> 
+            <%= rou.loginRegister %>
+        <% } %> 
+    </p>
+</span>

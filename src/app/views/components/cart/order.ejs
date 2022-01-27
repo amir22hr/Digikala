@@ -1,0 +1,96 @@
+<div class="columns is-multiline is-12 is-mobile">
+        <div class="column is-8">
+            <div class="notification is-light my-6">
+                <div class="orders">
+                    <% myOrders.forEach((order,index)=> { %>
+                        <article class="media">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="<%= order.items.photo.original %>">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <%= order.name.persian %>
+                                    </p>
+                                </div>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                        <span class="level-item has-text-danger">
+                                            تعداد:
+                                            <%= myCartNumber[index].toLocaleString('fa-ir') %>
+                                        </span>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="media-right">
+                                <a href="<%= rou.cart %>?deleteItem=<%= order._id %> "
+                                    class="button has-background-light is-danger is-inverted">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-trash has-text-danger"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+                        <%}); %>
+                </div>
+            </div>
+        </div>
+    
+        <div class="column is-4">
+            <div class="notification is-light mt-6 has-text-weight-bold">
+                <% //row1 %>
+                    <div class="is-flex is-justify-content-space-between py-2">
+                        <p>قیمت کالا ها (<% %>)</p>
+                        <p>
+                            <%= Amount.allPrice.toLocaleString('fa-ir') %> تومان
+                        </p>
+                    </div>
+                    <% //row2 %>
+                        <div class="is-flex is-justify-content-space-between py-2 has-text-danger">
+                            <p>تخفیف دیجی پلاس</p>
+                            <p>
+                                <%= Amount.subscriptionDiscount.toLocaleString('fa-ir') %> تومان
+                            </p>
+                        </div>
+                        <% //row3 %>
+                            <div class="is-flex is-justify-content-space-between">
+                                <p>هزینه ارسال (سراسر کشور)</p>
+                                <p>
+                                    <%= Amount.transportationCosts.toLocaleString('fa-ir') %> تومان
+                                </p>
+                            </div>
+                            <hr class="has-background-grey-lighter">
+                            <% //row4 %>
+                                <div class="is-flex is-justify-content-space-between pb-6">
+                                    <p>جمع سبد خرید</p>
+                                    <p>
+                                        <%= Amount.finalAmount.toLocaleString('fa-ir') %> تومان
+                                    </p>
+                                </div>
+                                <% //row5 %>
+                                    <div class="is-flex is-justify-content-space-between">
+                                        <form action="<%= rou.cart %>" method="post">
+                                        <button class="button is-danger is-rounded is-medium is-fullwidth">پرداخت و ثبت
+                                            سفارش نهایی
+                                        </button>
+                                        </form>
+                                    </div>
+            </div>
+            <div class="notification is-light is-danger mb-6 has-text-weight-bold">
+                <div class="is-flex is-justify-content-space-between py-2">
+                    <div class="icon-text">
+                        <span class="icon has-text-danger-dark">
+                            <i class="fas fa-coins"></i>
+                        </span>
+                        <span>امتیاز</span>
+                    </div>
+                    <p>
+                        <%= Amount.points.toLocaleString('fa-ir') %> امتیاز
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+    </div>

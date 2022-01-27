@@ -1,0 +1,56 @@
+<%# inputs this file: ----------------- rou , user %>
+
+    <%# Html - Body %>
+        <%- include('../layouts/search/header.ejs'); %>
+
+            <%# Template %>
+                <section class="my-6">
+                    <div class="container">
+
+                        <% if(products){ %> 
+                        <div class="columns is-multiline is-12 is-mobile">
+                            <% products.forEach(product => { %>
+                                <div class="column is-half-mobile is-4-tablet is-3-desktop">
+                                    <div class="card">
+                                        <a href="<%= rou.product + product._id %>" class="card-image">
+                                            <figure class="image is-4by3">
+                                                <img src="<%= product.items.photo.original %>"
+                                                    alt="Placeholder image">
+                                            </figure>
+                                        </a>
+                                        <div class="card-content">
+                                            <div class="content">
+                                                <a href="<%= rou.product + product._id %>">
+                                                    <%= product.name.persian %>
+                                                </a>
+                                            </div>
+    
+                                            <p class="has-text-left py-2">
+                                                <span class="icon-text">
+                                                    <span><%= product.items.points.toLocaleString('fa-ir') %></span>
+                                                    <span class="icon">
+                                                        <i class="fas fa-star has-text-warning"></i>
+                                                    </span>
+                                                </span>
+                                            </p>
+    
+                                            <p class="subtitle has-text-left has-text-weight-bold">
+                                                <span class="is-size-4"><%= product.items.price.original.toLocaleString('fa-ir') %></span>
+                                                <span class="is-size-6">تومان</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                        <% }else{ %> 
+                            <div class="notification is-warning">
+                                <p class="has-text-weight-bold">موردی برای (<%= search %>) یافت نشد</p>
+                            </div>
+                        <% } %> 
+
+                    </div>
+                </section>
+
+                <%# Body - Html %>
+                    <%- include('../layouts/search/footer.ejs') %>

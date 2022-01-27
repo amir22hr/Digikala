@@ -1,0 +1,85 @@
+<%# 
+inputs this file:
+-----------------
+
+%> 
+
+<%# variables %>
+<% 
+
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/dashboard/header.ejs') %>
+
+<%# Template %> 
+<div class="column is-9">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<%= rou.dashboard %>">داشبورد</a></li>
+            <li class="is-active"><a><%= lang.dashboard_myOrders %></a></li>
+        </ul>
+    </nav>
+    <% if(flash){ %>
+        <div class="notification is-danger">
+            <p class="has-text-weight-bold"><%= flash %></p>
+        </div>
+    <% } %>
+
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container">
+                <!-- level -->
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">در انتظار پرداخت</p>
+                            <p class="title"><%= pendingOrders.toLocaleString('fa-ir') %></p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">تحویل شده</p>
+                            <p class="title"><%= findCarts.length.toLocaleString('fa-ir') %></p>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /level -->
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <% if(findCarts){ %> 
+    <% findCarts.forEach((cart,index) => { %>
+    <article class="message">
+        <div class="message-header">
+            <div class="icon-text">
+                <span class="icon has-text-white">
+                  <i class="fas fa-fingerprint"></i>
+                </span>
+                <span><%= cart._id %></span>
+              </div>
+          <div class="icon-text">
+            <span class="icon has-text-white">
+              <i class="fas fa-clipboard-check"></i>
+            </span>
+            <span>تحویل شده</span>
+          </div>
+        </div>
+        <div class="message-body">
+        <% myOrders[index].forEach(order => { %>
+            <a href="<%= rou.product + order._id %>">
+                <img width="100" src="<%= order.items.photo.original %>" title="<%= order.items.price.original.toLocaleString('fa-ir') %>">
+            </a>
+        <% }); %> 
+        </div>
+    </article>
+    <% }); %> 
+    <% } %> 
+
+    
+</div>
+
+<%# Body - Html %> 
+<%- include('../layouts/dashboard/footer.ejs') %>

@@ -1,0 +1,113 @@
+<%# 
+inputs this file:
+-----------------
+
+%> 
+
+<%# variables %>
+<% 
+var wallet = user.items.wallet.toLocaleString('fa-ir');
+var days_left = user.items.digiplus.days_left.toLocaleString('fa-ir');
+var points = user.items.points.toLocaleString('fa-ir');
+var commentLength = commentLength.toLocaleString('fa-ir')
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/dashboard/header.ejs') %>
+
+<%# Template %> 
+<div class="column is-9">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<%= rou.dashboard %>"><%= lang.dashboard %></a></li>
+        </ul>
+    </nav>
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    سلام <%= user.name %>
+                </h1>
+                <h2 class="subtitle">
+                    هر روز کلی تخفیف داریم
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="info-tiles">
+        <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title">
+                        <%= wallet %>
+                    </p>
+                    <p class="subtitle">کیف پول (تومان)</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title">
+                        <%= days_left %> روز
+                    </p>
+                    <p class="subtitle">دیجی پلاس</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title"><%= commentLength %></p>
+                    <p class="subtitle">نظرات من</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title">
+                        <%= points %>
+                    </p>
+                    <p class="subtitle">امتیاز</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <div class="columns">
+        <div class="column is-12">
+            <div class="card events-card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        بازدید‌های اخیر
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-table">
+                    <div class="content">
+                        <table class="table is-fullwidth is-striped">
+                            <tbody>
+                                <tr>
+                                    <td width="5%"><i class="fas fa-eye"></i></td>
+                                    <td><a class="has-text-black" href="">گوشی موبایل شیائومی مدل POCO
+                                            X3 Pro M2102J20SG دو سیم‌ کارت ظرفیت 256 گیگابایت و 8
+                                            گیگابایت رم
+                                        </a>
+                                    </td>
+                                    <td class="level-right"><a
+                                            class="button is-small is-danger has-text-weight-bold"
+                                            href="#">حدف</a></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item has-text-danger">حذف همه</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%# Body - Html %> 
+<%- include('../layouts/dashboard/footer.ejs') %>

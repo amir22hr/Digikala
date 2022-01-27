@@ -1,0 +1,34 @@
+</div>
+</div>
+
+</section>
+
+<!-- scripts -->
+<script src="/static/js/fontawesome.js"></script>
+<script async type="text/javascript">
+    // The following code is based off a toggle menu by @Bradcomp
+    // source: https://gist.github.com/Bradcomp/a9ef2ef322a8e8017443b626208999c1
+    (function () {
+        var burger = document.querySelector('.burger');
+        var menu = document.querySelector('#' + burger.dataset.target);
+        burger.addEventListener('click', function () {
+            burger.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+        });
+    })();
+</script>
+<script>
+    // Copy Reward Code to clipboard
+    const btnRewardCode = document.getElementById("btn-reward-code");
+    const copyText = document.getElementById("copy-reward-code");
+    btnRewardCode.addEventListener('click', () => {
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+
+        navigator.clipboard.writeText(copyText.value);
+    });
+</script>
+
+</body>
+
+</html>

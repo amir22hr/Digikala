@@ -1,0 +1,92 @@
+<%# 
+inputs this file:
+-----------------
+rou , user
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/home/header.ejs'); %>
+
+<%# Template %> 
+<!-- Body -->
+<div class="container">
+    <section class="my-6">
+        <section class="hero is-danger">
+            <div class="hero-body has-text-centered">
+                <!--  -->
+                <p class="title">
+                    عضو دیجی‌پلاس شوید تا خدمات ویژه‌تر بگیرید!
+                </p>
+                <p class="subtitle my-3">
+                    ارسال رایگان | هدیه نقدی و ارسال فوری برای کالاهای برگزیده
+                </p>
+                <a href="#digiplus" class="button my-6 is-large is-white is-outlined">عضو دیجی پلاس شوید!</a>
+    
+                <hr>
+                <!--  -->
+                <i class="far fa-eye is-size-2"></i>
+                <h3 class="has-text-weight-bold is-size-2">مقایسه در یک نگاه</h3>
+    
+                <div style="background-color: white !important;" class="box my-6">
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th class="is-size-4">دیجی پلاس</th>
+                                <th></th>
+                                <th class="is-size-4">دیجی کالا</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>۴ سفارش با هر مبلغی</td>
+                                <th>ارسال رایگان</th>
+                                <td> بالای ۳۰۰ ‌هزار تومان</td>
+                            </tr>
+                            <tr>
+                                <td>۳۰ روزه</td>
+                                <th>ضمانت بازپس‌گرفتن کالا</th>
+                                <td>۷ روز</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-check-circle"></i></td>
+                                <th>خط تماس پشتیبانی ویژه</th>
+                                <td><i class="fas fa-times-circle"></i></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-check-circle"></i></td>
+                                <th>شگفت‌های اختصاصی برای کاربران دیجی‌پلاس</th>
+                                <td><i class="fas fa-times-circle"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <hr>
+                <!--  -->
+                <i id="digiplus" class="fas fa-user-plus is-size-2"></i>
+                <h3 class="has-text-weight-bold is-size-2 my-3">عضو دیجی‌پلاس شوید!</h3>
+    
+                <div class="columns my-6">
+                    <div class="column">
+                        <div style="background-color: white !important;" class="box has-text-centered">
+                            <i class="fas fa-calendar is-size-2"></i>
+                            <p class="is-size-4 my-4">اشتراک ۱ ماهه</p>
+                            <a href="<%= rou.dashboard_digiplus %>" class="button is-danger is-dark is-large">خرید اشتراک ۱ ماهه</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background-color: white !important;" class="box has-text-centered">
+                            <i class="fas fa-calendar is-size-2"></i>
+                            <p class="is-size-4 my-4">اشتراک ۳ ماهه</p>
+                            <a href="<%= rou.dashboard_digiplus %>" class="button is-danger is-dark is-large">خرید اشتراک ۳ ماهه</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+<!-- /Body -->
+
+<%# Body - Html %> 
+<%- include('../layouts/home/footer.ejs') %>

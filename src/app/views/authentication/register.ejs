@@ -1,0 +1,47 @@
+<%# 
+inputs this file:
+-----------------
+rou , email
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/authentication/header.ejs'); %>
+
+<%# Template %> 
+<section class="hero is-fullheight">
+    <div class="hero-body has-text-centered">
+        <div class="login">
+            <img class="my-6" src="<%= rou.static_img %>digikala_logo.svg" width="325px" />
+            <p class="is-size-5 has-text-weight-bold has-text-right my-4">
+                برای تایید حساب کاربری، لطفا ایمیل خود را چک کنید
+            </p>
+            <p class="is-size-6 has-text-centered my-3">
+                <span>فرستاده شد به</span>
+                <span><%= email %></span>
+            </p>
+            <p id="clear-timer" class="my-5">
+                <span>ارسال مجدد کد تا</span>
+                <span dir="ltr" id="countdown-timer">۰۲:۰۰</span>
+                <span>دیگر</span>
+            </p>
+            <form action="<%= rou.register %>?email=<%= email %>" method="post">
+                <input name="email" value="<%= email %>" hidden>
+                <button disabled id="sendAgain" type="submit"
+                    class="button is-block is-fullwidth is-danger is-medium is-rounded">
+                    ارسال مجدد
+                </button>
+            </form>
+            <br>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <a class="has-text-black" href="<%= rou.loginRegister %>">بازگشت</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<%# Body - Html %> 
+<%- include('../layouts/authentication/footer.ejs', {timerStart: true}) %>

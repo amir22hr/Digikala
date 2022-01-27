@@ -1,0 +1,81 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="<%= rou.home %>" class="navbar-item">
+                <img src="<%= rou.static_img %>digikala_logo.svg" alt="Logo">
+            </a>
+            <span class="navbar-item">
+                <div class="field has-addons">
+                    <div class="control" id="search-control">
+                        <form action="<%= rou.search %>" method="get">
+                            <input name="search" id="search"
+                                class="input has-text-danger has-background-grey-lighter is-white is-rounded"
+                                type="text" placeholder="جستجو در دیجی‌کالا ...">
+                        </form>
+                    </div>
+                    <div class="control">
+                        <a id="voice-search" class="button is-danger is-rounded">
+                            <i class="fas fa-microphone"></i>
+                        </a>
+                    </div>
+                    <div class="control">
+                        <a onclick="popup()" id="voice-search" class="button is-danger is-light is-rounded">
+                            <i class="far fa-question-circle"></i>
+                        </a>
+                        <div hidden id="popup">
+                            <p class="has-text-danger has-text-weight-bold">نکته: فرمان صوتی فقط بر روی مرورگر تحت
+                                دسکتاپ گوگل کروم عمل می کند.</p>
+                            <hr class="has-background-danger">
+                            <table class="table is-striped is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>فرمان صوتی</th>
+                                        <th>عملکرد</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>برو به داشبورد</th>
+                                        <td>هدایت می شوید به داشبورد</td>
+                                    </tr>
+                                    <tr>
+                                        <th>اضافه به سبد</th>
+                                        <td>در صفحه کالا، کالا به سبد خرید شما اضافه می شود</td>
+                                    </tr>
+                                    <tr>
+                                        <th>خروج از حساب</th>
+                                        <td>خروج از حساب کاربری</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <span class="navbar-burger" data-target="navbarMenuHeroB">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+            <div class="navbar-end">
+                <%- include('../product/cartBox.ejs') %> 
+                <span class="navbar-item">
+                    <a href="<%- user ? rou.dashboard : rou.loginRegister %> " class="button is-rounded">
+                        <span class="icon">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <% if(user){ %>
+                            <span>
+                                <%= user.name %>
+                            </span>
+                            <% }else{ %>
+                                <span>ورود به حساب کاربری</span>
+                                <% } %>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</nav>

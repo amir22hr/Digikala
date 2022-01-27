@@ -1,0 +1,20 @@
+<%# inputs this file: ----------------- rou , user %>
+
+<%# Html - Body %>
+<%- include('../layouts/cart/header.ejs'); %>
+
+<%# Template %>
+<section>
+<div class="container">
+
+<% if(user && myOrders){ %>
+    <%- include('../components/cart/order.ejs') %>
+<% }else{ %> 
+    <%- include('../components/cart/empty.ejs') %>
+<% } %> 
+
+</div>
+</section>
+
+<%# Body - Html %>
+<%- include('../layouts/cart/footer.ejs') %>
