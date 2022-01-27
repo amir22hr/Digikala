@@ -1,3 +1,6 @@
+# The project is nearing completion, but has not yet been completed
+
+# Approximate time: Jan 29 2022
 
 # Simple Online Store
 
