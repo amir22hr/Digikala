@@ -5,6 +5,7 @@
 
 ## :pushpin: Todo
 -  [x] send mail
+-  [ ] add Test for all part
 -  [ ] add other languages
 -  [ ] Complete the special users section
 -  [ ] Convert monolithic App to microservices App
