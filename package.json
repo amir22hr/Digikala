@@ -17,7 +17,6 @@
   "author": "Amir Hossein Ranjbar",
   "license": "ISC",
   "dependencies": {
-    "@sendgrid/mail": "^7.6.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
@@ -27,8 +26,8 @@
     "express-session": "^1.17.2",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mailgun-js": "^0.22.0",
     "mongoose": "^6.1.5",
+    "nodemailer": "^6.7.2",
     "ora-classic": "^5.4.2"
   }
 }

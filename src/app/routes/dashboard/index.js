@@ -8,6 +8,7 @@ const chargeWallet = require('./chargeWallet')
 const rewardsPoints = require('./rewardsPoints')
 const myComment = require('./myComment')
 const myOrders = require('./myOrders')
+const viewAccount = require('./viewAccount')
 
 //dashboard
 router.use(dashboard)
@@ -23,6 +24,8 @@ router.use(rewardsPoints)
 router.use(myComment)
 //myOrders
 router.use(myOrders)
+//viewAccount
+router.use(viewAccount)
 
 
 //---------------------

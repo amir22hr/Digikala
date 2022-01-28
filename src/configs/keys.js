@@ -13,10 +13,9 @@ module.exports = {
       secret: process.env.JWT_SECRET,
       tokenLife: '2d'
     },
-    mailGun: {
-      key: process.env.MAILGUN_KEY,
-      domain: process.env.MAILGUN_DOMAIN,
-      sender: process.env.MAILGUN_EMAIL_SENDER
+    mail: {
+      email: process.env.MAIL_EMAIL,
+      password: process.env.MAIL_PASS
     },
     digiplus:{
       month1:{

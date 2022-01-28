@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
+const ejs = require('ejs')
 
-const { rou, lang, faErrors, validation, mailGun, setCookie } = require('../../utils')
+const { rou, lang, faErrors, validation, mailSender, setCookie } = require('../../utils')
 const { Queues, Customer } = require('../../models')
 
 const get = async (req, res) => {
@@ -70,18 +71,25 @@ const post = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
-        items:{
+        items: {
             phone: req.body.phone,
             address: req.body.address,
         }
     });
 
     try {
+        const data = {
+            title: lang.activatedMailSubject,
+            name: req.body.name,
+            rou: 'http://localhost:3001/'
+        }
+        const html = await ejs.renderFile(`${__dirname}/../../views/mail/activatedAccount.ejs`, data)
+
         await customer.save();
-        await mailGun({
+        await mailSender({
             to: req.body.email,
-            subject: "Welcome to Digikala",
-            text: "congratulations"
+            subject: lang.activatedMailSubject,
+            html
         });
         await Queues.findOneAndDelete({ token: req.body.token })
     } catch (err) {

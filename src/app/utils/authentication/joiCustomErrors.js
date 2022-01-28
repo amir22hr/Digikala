@@ -19,5 +19,6 @@ module.exports.faErrors = {
     'password.register': 'رمز عبور باید بیشتر از ۶ کارکتر باشد',
     'password.login': 'اطلاعات وارد شده صحیح نیست',
     'password.confirmation': 'رمز عبور با تکرار رمز عبور یکسان نیست',
+    
     'custom.error': 'اطلاعات وارد شده صحیح نیست'
 };

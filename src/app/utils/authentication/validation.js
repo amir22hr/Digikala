@@ -79,6 +79,15 @@ const product = data => {
     return schema.validate(data)
 }
 
+//View Account
+const viewAccount = data => {
+    const schema = Joi.object({
+        name: Joi.string().required().error(new Error(faErrors['custom.error'])),
+        address: Joi.string().required().error(new Error(faErrors['custom.error']))
+    })
+    return schema.validate(data)
+}
+
 module.exports = {
     loginRegisterValidation,
     registerValidation,
@@ -87,5 +96,6 @@ module.exports = {
     chargeWallet,
     rewardsPoints,
     comments,
-    product
+    product,
+    viewAccount
 }

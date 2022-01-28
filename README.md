@@ -25,4 +25,5 @@ $ npm install
 2.  RUN npm install
 3.  RUN npm run start
 
-> for login A user by default:  [digikala@mailinator.com](mailto:digikala@mailinator.com)  123456
+> for login A user by default:  [jagava3450@nahetech.com](mailto:jagava3450@nahetech.com)  123456
+https://temp-mail.org/en

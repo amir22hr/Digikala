@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const ejs = require('ejs')
 
-const { rou, lang, validation, mailGun } = require('../../utils')
+const { rou, lang, validation, mailSender } = require('../../utils')
 const { Queues } = require('../../models')
 
 const get = (req, res) => {
@@ -21,24 +21,6 @@ const get = (req, res) => {
 
 const post = async (req, res) => {
 
-    const email = req.body.email;
-    const queues = await Queues.findOne({ email })
-    const cryptoToken = crypto.randomBytes(80).toString('hex');
-    console.log(queues)
-    var validLink;
-    if(queues){
-        validLink = `http://localhost:3001${rou.registerForm}?token=${queues.token}`
-    }else{
-        validLink = `http://localhost:3001${rou.registerForm}?token=${cryptoToken}`
-    }
-
-    //render ejs
-    const data = {
-        title: lang.registerMailTitle,
-        validLink
-    }
-    const html = await ejs.renderFile(`${__dirname}/../../views/mail/registerMail.ejs`, data)
-
     //Validation Input
     const { error } = validation.registerValidation(req.body);
     if (error) {
@@ -49,10 +31,27 @@ const post = async (req, res) => {
         return res.status(302).redirect(rou.loginRegister);
     }
 
+    const email = req.body.email;
+    const queues = await Queues.findOne({ email })
+    const cryptoToken = crypto.randomBytes(80).toString('hex');
+    var validLink;
+    if (queues) {
+        validLink = `http://localhost:3001${rou.registerForm}?token=${queues.token}`
+    } else {
+        validLink = `http://localhost:3001${rou.registerForm}?token=${cryptoToken}`
+    }
+
+    //render ejs
+    const data = {
+        title: lang.registerMailTitle,
+        validLink
+    }
+    const html = await ejs.renderFile(`${__dirname}/../../views/mail/registerMail.ejs`, data)
+
     //Validation DB
     if (queues) {
         //EmailSender
-        await mailGun({
+        await mailSender({
             to: email,
             subject: lang.registerMailSubject,
             html
@@ -65,7 +64,7 @@ const post = async (req, res) => {
 
         try {
             await createQueue.save();
-            await mailGun({
+            await mailSender({
                 to: email,
                 subject: lang.registerMailSubject,
                 html

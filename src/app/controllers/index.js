@@ -14,6 +14,7 @@ const chargeWallet = require('./dashboard/chargeWallet.controller')
 const rewardsPoints = require('./dashboard/rewardsPoints.controller')
 const myComment = require('./dashboard/myComment.controller')
 const myOrders = require('./dashboard/myOrders.controller')
+const viewAccount = require('./dashboard/viewAccount.controller')
 //search '/search', '/search/category/:name'
 const search = require('./search/search.controller')
 const category = require('./search/category.controller')
@@ -40,4 +41,5 @@ module.exports = {
     category,
     product,
     cart,
+    viewAccount
 }

@@ -22,6 +22,7 @@ const rou = {
     dashboard_rewardsPoints: '/user/dashboard/rewardsPoints',
     dashboard_myComment: '/user/dashboard/myComment',
     dashboard_myOrders: '/user/dashboard/myOrders',
+    dashboard_viewAccount: '/user/dashboard/viewAccount',
     //search - category
     category: '/search/category/',
     search: '/search',

@@ -15,7 +15,7 @@ const rou = require('./helpers/routes')
 const expiryDigiplus = require('./helpers/expiryDigiplus')
 const myOrder = require('./helpers/myOrder')
 //mail
-const mailGun = require('./mail/mailGun')
+const mailSender = require('./mail/mailSender')
 
 module.exports = {
     spinner,
@@ -26,7 +26,7 @@ module.exports = {
     validation,
     lang,
     rou,
-    mailGun,
+    mailSender,
     invalidationLogout,
     invalidationLogin,
     setCookie,

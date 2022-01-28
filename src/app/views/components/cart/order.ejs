@@ -1,5 +1,5 @@
 <div class="columns is-multiline is-12 is-mobile">
-        <div class="column is-8">
+        <div class="column is-12-mobile is-8-tablet">
             <div class="notification is-light my-6">
                 <div class="orders">
                     <% myOrders.forEach((order,index)=> { %>
@@ -38,7 +38,7 @@
             </div>
         </div>
     
-        <div class="column is-4">
+        <div class="column is-12-mobile is-4-tablet">
             <div class="notification is-light mt-6 has-text-weight-bold">
                 <% //row1 %>
                     <div class="is-flex is-justify-content-space-between py-2">
@@ -71,9 +71,9 @@
                                 </div>
                                 <% //row5 %>
                                     <div class="is-flex is-justify-content-space-between">
-                                        <form action="<%= rou.cart %>" method="post">
-                                        <button class="button is-danger is-rounded is-medium is-fullwidth">پرداخت و ثبت
-                                            سفارش نهایی
+                                        <form action="<%= rou.cart %>" method="post" style="text-align: center;">
+                                        <button class="button is-danger is-rounded is-medium is-fullwidth">
+                                            پرداخت و ثبت سفارش نهایی
                                         </button>
                                         </form>
                                     </div>

@@ -1,0 +1,96 @@
+<%# 
+inputs this file:
+-----------------
+
+%> 
+
+<%# variables %>
+<% 
+
+%> 
+
+<%# Html - Body %> 
+<%- include('../layouts/dashboard/header.ejs') %>
+
+<%# Template %> 
+<div class="column is-9">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<%= rou.dashboard %>">داشبورد</a></li>
+            <li class="is-active"><a><%= lang.dashboard_viewAccount %></a></li>
+        </ul>
+    </nav>
+    <% if(flash){ %>
+        <div class="notification is-danger">
+            <p class="has-text-weight-bold"><%= flash %></p>
+        </div>
+    <% } %> 
+
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container">
+                <!-- level -->
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">تاریخ ثبت نام</p>
+                            <p class="title"><%= user.registration_date %></p>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /level -->
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <div class="authentication">
+        <p class="is-size-4 has-text-weight-bold has-text-center my-4">اطلاعات حساب کاربری</p>
+        <form action="" method="post">
+            <div class="field">
+                <label class="label">نام و نام خانوادگی</label>
+                <div class="control">
+                    <input name="name" class="input is-medium is-rounded" type="text" value="<%= user.name %>"
+                        required />
+                </div>
+            </div>
+            <div dir="ltr" class="field">
+                <label dir="rtl" class="label">پست الکترونیک</label>
+                <div class="control">
+                    <input disabled class="input is-medium is-rounded" type="email" value="<%= user.email %>"
+                     />
+                </div>
+            </div>
+            <!-- tel -->
+            <label class="label">شماره تلفن</label>
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input disabled value="<%= user.items.phone.toLocaleString('fa-ir').replace(/٬/g, ''); %>" dir="ltr" class="input is-medium is-rounded" type="text"
+                        maxlength="11" placeholder="شماره تلفن همراه - ۱۱رقم" required />
+                </div>
+                <p class="control">
+                    <a class="button is-rounded is-size-5" id="tel">
+                        ۹۸ +
+                    </a>
+                </p>
+            </div>
+
+            <div class="field">
+                <label class="label">آدرس پستی</label>
+                <div class="control">
+                    <input name="address" class="input is-medium is-rounded" type="text" value="<%= user.items.address %>"
+                        required />
+                </div>
+            </div>
+            <br>
+            <button class="button is-block is-fullwidth is-danger is-medium is-rounded" type="submit">
+                ذخیره اطلاعات
+            </button>
+        </form>
+    </div>
+
+    
+</div>
+
+<%# Body - Html %> 
+<%- include('../layouts/dashboard/footer.ejs') %>

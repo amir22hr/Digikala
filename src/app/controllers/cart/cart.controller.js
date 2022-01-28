@@ -1,7 +1,7 @@
 const ejs = require('ejs')
 
-const { rou, lang, myOrder, validation, mailGun } = require('../../utils')
-const { ProductCategory, Product, Customer, Cart } = require('../../models')
+const { rou, lang, myOrder, mailSender } = require('../../utils')
+const { ProductCategory, Customer, Cart } = require('../../models')
 
 const get = async (req, res) => {
 
@@ -50,7 +50,7 @@ const get = async (req, res) => {
         }
         myOrders.forEach(order => {
             Amount.allPrice += order.items.price.original
-            Amount.subscriptionDiscount += order.items.price.subscription_discount ? (order.items.price.original - order.items.price.subscription_discount) : 0,
+            Amount.subscriptionDiscount += order.items.price.subscription_discount ? order.items.price.subscription_discount : 0,
             Amount.points += order.items.points
         });
         Amount.finalAmount = (Amount.allPrice - Amount.subscriptionDiscount) + Amount.transportationCosts
@@ -66,7 +66,7 @@ const get = async (req, res) => {
 
 
     const data = {
-        title: "product.name.persian",
+        title: `${lang.cart} - ${req.user.name}`,
         user: req.user,
         rou,
         lang,
@@ -98,7 +98,7 @@ const post = async (req, res) => {
             }
             myOrders.forEach(order => {
                 Amount.allPrice += order.items.price.original
-                Amount.subscriptionDiscount += order.items.price.subscription_discount ? (order.items.price.original - order.items.price.subscription_discount) : 0,
+                Amount.subscriptionDiscount += order.items.price.subscription_discount ? order.items.price.subscription_discount : 0,
                 Amount.points += order.items.points
             });
             Amount.finalAmount = (Amount.allPrice - Amount.subscriptionDiscount) + Amount.transportationCosts
@@ -125,7 +125,7 @@ const post = async (req, res) => {
             const html = await ejs.renderFile(`${__dirname}/../../views/mail/cartMail.ejs`, data)
 
             //send Mail with html
-            await mailGun({
+            await mailSender({
                 to: req.user.email,
                 subject: client,
                 html

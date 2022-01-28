@@ -12,9 +12,12 @@ const enToFa = {
     dashboard_rewardsPoints: "جوایز امتیازات",
     dashboard_myComment: "نظرات من",
     dashboard_myOrders: 'سفارش‌های من',
+    dashboard_viewAccount: 'اطلاعات حساب',
     category: 'دسته بندی',
     registerMailTitle: 'تایید کردن پست الکترونیک - دیجی کالا',
     registerMailSubject: 'تایید کردن پست الکترونیک - دیجی کالا',
+    activatedMailSubject: 'حساب کاربری فعال شد',
+    cart: 'سبد خرید',
 }
 
 module.exports = enToFa
