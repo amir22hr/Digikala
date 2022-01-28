@@ -50,8 +50,8 @@ const get = async (req, res) => {
         }
         myOrders.forEach(order => {
             Amount.allPrice += order.items.price.original
-            Amount.subscriptionDiscount += order.items.price.subscription_discount ? order.items.price.subscription_discount : 0,
-                Amount.points += order.items.points
+            Amount.subscriptionDiscount += order.items.price.subscription_discount ? (order.items.price.original - order.items.price.subscription_discount) : 0,
+            Amount.points += order.items.points
         });
         Amount.finalAmount = (Amount.allPrice - Amount.subscriptionDiscount) + Amount.transportationCosts
     }
@@ -98,8 +98,8 @@ const post = async (req, res) => {
             }
             myOrders.forEach(order => {
                 Amount.allPrice += order.items.price.original
-                Amount.subscriptionDiscount += order.items.price.subscription_discount ? order.items.price.subscription_discount : 0,
-                    Amount.points += order.items.points
+                Amount.subscriptionDiscount += order.items.price.subscription_discount ? (order.items.price.original - order.items.price.subscription_discount) : 0,
+                Amount.points += order.items.points
             });
             Amount.finalAmount = (Amount.allPrice - Amount.subscriptionDiscount) + Amount.transportationCosts
 
