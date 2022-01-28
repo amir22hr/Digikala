@@ -5,9 +5,9 @@
 
 ## :pushpin: Todo
 -  [x] send mail
+-  [ ] Complete the Digiplus users section
 -  [ ] add Test for all part
 -  [ ] add other languages
--  [ ] Complete the special users section
 -  [ ] Convert monolithic App to microservices App
 -  [ ] Transfer ejs to ReactJs
 
