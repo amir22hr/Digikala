@@ -4,10 +4,11 @@
 > Simple but practical
 
 ## :pushpin: Todo
--  [x] send mail
+-  [x] Send mail
+-  [x] Renew 404,500 pages
 -  [ ] Complete the Digiplus users section
--  [ ] add Test for all part
--  [ ] add other languages
+-  [ ] Add Test for all part
+-  [ ] Add other languages
 -  [ ] Convert monolithic App to microservices App
 -  [ ] Transfer ejs to ReactJs
 
