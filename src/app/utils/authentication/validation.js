@@ -32,6 +32,14 @@ const loginValidation = data => {
     return schema.validate(data)
 }
 
+//passwordRecovery
+const passwordRecoveryValidation = data => {
+    const schema = Joi.object({
+        email: Joi.string().email().min(6).required().error(new Error(faErrors['email.invalid'])),
+    })
+    return schema.validate(data)
+}
+
 //Register - Form
 const registerFormValidation = data => {
     const schema = Joi.object({
@@ -88,14 +96,25 @@ const viewAccount = data => {
     return schema.validate(data)
 }
 
+const changePassword = data => {
+    const schema = Joi.object({
+        password: Joi.string().required().min(6).error(new Error(faErrors['changePassword.invalid'])),
+        password_new: Joi.string().required().min(6).error(new Error(faErrors['changePassword.invalid'])),
+        password_confirmation: Joi.string().valid(Joi.ref('password_new')).required().error(new Error(faErrors['password.confirmation'])),
+    })
+    return schema.validate(data)
+}
+
 module.exports = {
     loginRegisterValidation,
     registerValidation,
     loginValidation,
     registerFormValidation,
+    passwordRecoveryValidation,
     chargeWallet,
     rewardsPoints,
     comments,
     product,
-    viewAccount
+    viewAccount,
+    changePassword
 }

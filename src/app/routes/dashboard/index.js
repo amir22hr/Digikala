@@ -9,6 +9,7 @@ const rewardsPoints = require('./rewardsPoints')
 const myComment = require('./myComment')
 const myOrders = require('./myOrders')
 const viewAccount = require('./viewAccount')
+const changePassword = require('./changePassword')
 
 //dashboard
 router.use(dashboard)
@@ -26,6 +27,8 @@ router.use(myComment)
 router.use(myOrders)
 //viewAccount
 router.use(viewAccount)
+//changePassword
+router.use(changePassword)
 
 
 //---------------------

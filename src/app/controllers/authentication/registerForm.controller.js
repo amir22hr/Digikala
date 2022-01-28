@@ -83,7 +83,7 @@ const post = async (req, res) => {
             name: req.body.name,
             rou: 'http://localhost:3001/'
         }
-        const html = await ejs.renderFile(`${__dirname}/../../views/mail/activatedAccount.ejs`, data)
+        const html = await ejs.renderFile(`${__dirname}/../../views/mail/activatedAccountMail.ejs`, data)
 
         await customer.save();
         await mailSender({

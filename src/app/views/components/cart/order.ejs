@@ -42,7 +42,7 @@
             <div class="notification is-light mt-6 has-text-weight-bold">
                 <% //row1 %>
                     <div class="is-flex is-justify-content-space-between py-2">
-                        <p>قیمت کالا ها (<% %>)</p>
+                        <p>قیمت کالا ها (<%= myOrders.length.toLocaleString('fa-ir') %>)</p>
                         <p>
                             <%= Amount.allPrice.toLocaleString('fa-ir') %> تومان
                         </p>

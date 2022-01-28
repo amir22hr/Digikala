@@ -23,6 +23,7 @@ const rou = {
     dashboard_myComment: '/user/dashboard/myComment',
     dashboard_myOrders: '/user/dashboard/myOrders',
     dashboard_viewAccount: '/user/dashboard/viewAccount',
+    dashboard_changePassword: '/user/dashboard/changePassword',
     //search - category
     category: '/search/category/',
     search: '/search',
