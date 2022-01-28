@@ -5,10 +5,10 @@
 
 ## :pushpin: Todo
 -  [x] send mail
--  [] add other languages
--  [] Complete the special users section
--  [] Convert monolithic App to microservices App
--  [] Transfer ejs to ReactJs
+-  [ ] add other languages
+-  [ ] Complete the special users section
+-  [ ] Convert monolithic App to microservices App
+-  [ ] Transfer ejs to ReactJs
 
 ## :cloud: Installation
 
