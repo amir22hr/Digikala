@@ -51,7 +51,11 @@
                         <div class="is-flex is-justify-content-space-between py-2 has-text-danger">
                             <p>تخفیف دیجی پلاس</p>
                             <p>
-                                <%= Amount.subscriptionDiscount.toLocaleString('fa-ir') %> تومان
+                                <% if(user.items.digiplus.has){ %>
+                                    <%= Amount.subscriptionDiscount.toLocaleString('fa-ir') %> تومان
+                                <% }else{ %>
+                                    اشتراک ندارید
+                                <% } %>
                             </p>
                         </div>
                         <% //row3 %>

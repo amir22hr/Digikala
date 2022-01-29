@@ -1,5 +1,9 @@
 <%# inputs this file: ----------------- rou , user %>
 
+<% 
+  var pricePlus = product.items.price.original - product.items.price.subscription_discount;
+%> 
+
 <%# Html - Body %>
 <%- include('../layouts/product/header.ejs'); %>
 
@@ -34,10 +38,23 @@
             <div class="column is-12-mobile is-4-tablet">
             <div class="box" style="background-color: #f5f5f5 !important;">
               <p class="subtitle has-text-right has-text-weight-bold">
-                قیمت
+                <span>قیمت</span>
+                <% if(user){ %> 
+                <% if(user.items.digiplus.has){ %> 
+                  <span class="tag is-danger is-light">دیجی پلاس</span>
+                <% } %> 
+                <% } %> 
+              </p>
               </p>
               <p class="subtitle has-text-left has-text-weight-bold">
-                <span class="is-size-4"><%= product.items.price.original.toLocaleString('fa-ir') %></span>
+                <% if(user){ %> 
+                <% if(user.items.digiplus.has){ %> 
+                  <span class="is-size-4 has-text-danger"><%= pricePlus.toLocaleString('fa-ir') %></span>
+                  <span style="text-decoration: line-through;" class="is-size-4"><%= product.items.price.original.toLocaleString('fa-ir') %></span>
+                <% } %> 
+                <% }else{ %> 
+                    <span class="is-size-4"><%= product.items.price.original.toLocaleString('fa-ir') %></span>
+                <% } %> 
                 <span class="is-size-6">تومان</span>
               </p>
               <hr class="has-background-grey-lighter">

@@ -47,7 +47,11 @@ var commentLength = commentLength.toLocaleString('fa-ir')
             <div class="tile is-parent">
                 <article class="tile is-child box">
                     <p class="title">
-                        <%= days_left %> روز
+                        <% if(user.items.digiplus.has){ %> 
+                            <%= days_left %> روز
+                        <% }else{ %> 
+                            اشتراک ندارید
+                        <% } %> 
                     </p>
                     <p class="subtitle">دیجی پلاس</p>
                 </article>
